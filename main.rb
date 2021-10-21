@@ -6,5 +6,8 @@ require_relative 'game'
 require_relative 'computer_player'
 require_relative 'human_player'
 
-play = Game.new( codemaker: ComputerPlayer.new("HAL"),
-      codebreaker: HumanPlayer.new("Joe") )
+mastermind = Game.new(
+  computer: ComputerPlayer.new("HAL-9000"),
+  human: HumanPlayer.new("HUMAN")
+)
+mastermind.play

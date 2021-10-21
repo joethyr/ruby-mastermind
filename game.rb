@@ -1,16 +1,45 @@
 # frozen_string_literal: true
 
-# responsible for the game's functionality.
+require 'pry-byebug'
+require_relative 'game_dialogue'
+# responsible for the setting up the game.
 class Game
-  attr_reader :codemaker, :codebreaker
+  include GameDialogue
+  attr_reader :human, :computer
 
   def initialize(options)
-    @codemaker = options[:codemaker]
-    @codebreaker = options[:codebreaker]
+    @human = options[:human]
+    @computer = options[:computer]
   end
 
-  def defaults
-    { codemaker: ComputerPlayer.new("HAL"),
-      codebreaker: HumanPlayer.new("Joe") }
+  def play
+    introduction
+    setup
+  end
+
+# sets roles for the game
+  def setup
+    mode = select_mode
+    code_maker if mode == 1
+    code_breaker if mode == 2
+  end
+
+  def select_mode
+    input = gets.chomp.to_i
+    return input if (1..2).include?(input)
+
+    print "Invalid input.\nTry again.\n>"
+    select_mode
+  end
+
+  def code_maker
+    # human_maker = ComputerCodeBreaker.new
+    puts "FEATURE TO BE INCLUDED."
+  end
+
+  def code_breaker
+    human_breaker = HumanCodeBreaker.new
   end
 end
+
+
