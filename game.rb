@@ -1,15 +1,21 @@
 # frozen_string_literal: true
 
 require 'pry-byebug'
-require_relative 'game_dialogue'
+# require_relative 'game_dialogue'
 # responsible for the setting up the game.
 class Game
-  include GameDialogue
+  # include GameDialogue
   attr_reader :human, :computer
 
   def initialize(options)
     @human = options[:human]
     @computer = options[:computer]
+  end
+
+  def introduction
+    puts "Lets play a game of Mastermind!"
+    puts "#{human.name}, will you play as the codemaker or the codebreaker?"
+    print "Enter 1 for codemaker or 2 for codebreaker:\n>"
   end
 
   def play
@@ -38,6 +44,8 @@ class Game
   end
 
   def code_breaker
+    puts "#{human.name} will be the codebreaker."
+    puts "#{computer.name} will be the codemaker."
     human_breaker = HumanCodeBreaker.new
   end
 end
