@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# responsible for the all functionality for human player's role as code breaker.
+# responsible for game functionality of human player's role as code breaker.
 class HumanCodeBreaker
   require_relative "code_validation"
 
@@ -9,20 +9,21 @@ class HumanCodeBreaker
 
   def initialize
     @computer_code = [rand(1..6), rand(1..6), rand(1..6), rand(1..6)]
-    puts "the computer_code is #{computer_code}"
-    turn_phase
+    # puts "the computer_code is #{computer_code}"
+    play_round
   end
 
-  def turn_phase
+  def play_round
     turns = 1
     until turns == 13
       puts "turn #{turns}"
       print "Please enter the 4 digit code:\n>"
       guess = input_guess
       check_guess(guess, computer_code)
-      puts " this is my guess #{guess}"
+      # puts " this is my guess #{guess}
       turns += 1
     end
+    player_lost(computer_code.join(''))
   end
 
   def input_guess

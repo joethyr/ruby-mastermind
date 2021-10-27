@@ -39,6 +39,32 @@ module CodeValidation
 
   def player_won
     puts "You cracked the code!"
+    play_again
+  end
+
+  def player_lost(code)
+    puts "You lose! the correct code is #{code}"
+    play_again
+  end
+
+  def play_again
+    print "Play again? (y/n)\n>"
+    input = gets.chomp
+    exit_game if input.upcase == 'N'
+    new_game if input.upcase == 'Y'
+    puts "Invalid input.\n"
+    play_again
+  end
+
+  def new_game
+    Game.new(
+      computer: ComputerPlayer.new("HAL-9000"),
+      human: HumanPlayer.new("HUMAN")
+    ).start_game
+  end
+
+  def exit_game
+    puts "Goodbye!"
     exit
   end
 end

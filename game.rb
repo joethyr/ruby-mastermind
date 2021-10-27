@@ -18,7 +18,7 @@ class Game
     print "Enter 1 for codemaker or 2 for codebreaker:\n>"
   end
 
-  def play
+  def start_game
     introduction
     setup
   end

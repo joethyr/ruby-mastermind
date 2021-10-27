@@ -11,4 +11,4 @@ mastermind = Game.new(
   computer: ComputerPlayer.new("HAL-9000"),
   human: HumanPlayer.new("HUMAN")
 )
-mastermind.play
+mastermind.start_game
