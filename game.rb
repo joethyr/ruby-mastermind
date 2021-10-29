@@ -39,14 +39,13 @@ class Game
   end
 
   def code_maker
-    # human_maker = ComputerCodeBreaker.new
-    puts "FEATURE TO BE INCLUDED."
+    puts "#{computer.name} will be the codebreaker.\n#{human.name} will be the codemaker."
+    ComputerCodeBreaker.new
   end
 
   def code_breaker
-    puts "#{human.name} will be the codebreaker."
-    puts "#{computer.name} will be the codemaker."
-    human_breaker = HumanCodeBreaker.new
+    puts "#{human.name} will be the codebreaker.\n#{computer.name} will be the codemaker."
+    HumanCodeBreaker.new
   end
 end
 

@@ -2,28 +2,31 @@
 
 # responsible for game functionality of human player's role as code breaker.
 class HumanCodeBreaker
-  require_relative "code_validation"
+  require_relative "game_logic"
 
-  include CodeValidation
+  include GameLogic
   attr_reader :computer_code
 
   def initialize
-    @computer_code = [rand(1..6), rand(1..6), rand(1..6), rand(1..6)]
-    # puts "the computer_code is #{computer_code}"
+    @computer_code = 4.times.map { rand(1..6) }
+    puts "the computer_code is #{computer_code}"
     play_round
   end
 
   def play_round
-    turns = 1
-    until turns == 13
-      puts "turn #{turns}"
-      print "Please enter the 4 digit code:\n>"
-      guess = input_guess
-      check_guess(guess, computer_code)
-      # puts " this is my guess #{guess}
-      turns += 1
+    turn = 1
+    until turn == 13
+      single_turn(turn)
+      turn += 1
     end
     player_lost(computer_code.join(''))
+  end
+
+  def single_turn(num)
+    puts "TURN ##{num}\nPlease enter the 4 digit code:\n"
+    print ">"
+    guess = input_guess
+    check_guess(guess, computer_code)
   end
 
   def input_guess

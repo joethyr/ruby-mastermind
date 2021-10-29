@@ -1,4 +1,4 @@
-module CodeValidation
+module GameLogic
   def exact_code(guess, code)
     exact = 0
     code.each_with_index do |i, j|
