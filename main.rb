@@ -7,6 +7,8 @@ require_relative 'computer_player'
 require_relative 'human_player'
 require_relative 'human_code_breaker'
 require_relative 'computer_code_breaker'
+require_relative 'code_list'
+
 
 mastermind = Game.new(
   computer: ComputerPlayer.new("HAL-9000"),

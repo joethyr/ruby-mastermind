@@ -67,6 +67,4 @@ module GameLogic
     puts "Goodbye!"
     exit
   end
-
-  mylambda = ->(i) { i.chars.map(&:to_i) }
 end

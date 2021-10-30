@@ -5,9 +5,11 @@ class ComputerCodeBreaker
   require_relative "game_logic"
 
   include GameLogic
+  attr_reader :human_code
 
   def initialize
-    @code = set_code
+
+    @human_code = set_code.chars.map(&:to_i)
     puts 'Ok, computer try to crack the code!'
     computer_start
     @mylambda = ->(i) { i.chars.map(&:to_i) }
@@ -15,16 +17,19 @@ class ComputerCodeBreaker
 
   def set_code
     print "Please create the 4-digit code:\n>"
-    gets.chomp(&@mylambda)
+    gets.chomp
   end
 
   def computer_start
-    guess = initial_guess(&@mylambda)
-    puts guess
+    p guess = initial_guess.chars.map(&:to_i)
+    check_guess(guess, human_code)
   end
 
   def initial_guess
-    number = rand(1..6).to_s
-    number * 4
+    number = rand(1..6).to_s * 4
+  end
+
+  def second_guess
+
   end
 end
