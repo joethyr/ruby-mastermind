@@ -12,4 +12,16 @@ class CodeList
     end
   end
 
+  def update_possible_codes(black, white, guess)
+    new_possibilities = []
+    saved_guess = guess.to_sym
+    @possibilities.each do |possible_guess|
+      temp_scores = compare_possible_guess_to_current_guess(saved_guess, possible_guess)
+      blackcounter, whitecounter = temp_scores.first, temp_scores.last
+      if possibility_has_correct_number_of_colors?(black, blackcounter, white, whitecounter)
+        new_possibilities << possible_guess
+      end
+    end
+    @possibilities = new_possibilities
+  end
 end

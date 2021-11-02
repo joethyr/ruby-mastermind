@@ -6,13 +6,17 @@ class ComputerCodeBreaker
   require_relative "code_list"
 
   include GameLogic
-  attr_reader :human_code
+  attr_reader :human_code, :code_list
 
   def initialize
+    @code_list = CodeList.new
     @human_code = set_code.chars.map(&:to_i)
     puts 'Ok, computer try to crack the code!'
+    play_round
+  end
+
+  def play_round
     computer_start
-    @mylambda = ->(i) { i.chars.map(&:to_i) }
   end
 
   def set_code
@@ -21,12 +25,8 @@ class ComputerCodeBreaker
   end
 
   def computer_start
-    p guess = 2211.digits
+    p guess = 1111.digits
     check_guess(guess, human_code)
   end
 
-
-  def second_guess
-
-  end
 end
